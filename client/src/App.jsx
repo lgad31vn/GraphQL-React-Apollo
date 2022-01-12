@@ -1,4 +1,4 @@
-import GetUsers from './Components/GetUsers';
+import Form from './Components/Form';
 import './App.css';
 import {
   ApolloClient,
@@ -31,7 +31,8 @@ const graphQLClient = new ApolloClient({
 const App = () => {
   return (
     <ApolloProvider client={graphQLClient}>
-      <GetUsers />
+      {/* <GetUsers /> */}
+      <Form />
     </ApolloProvider>
   );
 };
