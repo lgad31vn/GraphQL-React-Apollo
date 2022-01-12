@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import GetUsers from './Components/GetUsers';
 import './App.css';
 import {
   ApolloClient,
@@ -10,11 +10,6 @@ import {
 
 import { onError } from '@apollo/client/link/error';
 
-const graphQLLink = from([
-  errorLink, // need this to catch errors
-  new HttpLink({ uri: 'http://localhost:4000/graphql' }),
-]);
-
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.map(({ message, localtion, path }) => {
@@ -22,6 +17,10 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     });
   }
 });
+const graphQLLink = from([
+  errorLink, // need this to catch errors
+  new HttpLink({ uri: 'http://localhost:4000/graphql' }),
+]);
 
 // actual Apollo Client
 const graphQLClient = new ApolloClient({
@@ -30,7 +29,11 @@ const graphQLClient = new ApolloClient({
 });
 
 const App = () => {
-  return <ApolloClient client={graphQLClient}></ApolloClient>;
+  return (
+    <ApolloProvider client={graphQLClient}>
+      <GetUsers />
+    </ApolloProvider>
+  );
 };
 
 export default App;
