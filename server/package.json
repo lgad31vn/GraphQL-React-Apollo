@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "devStart": "nodemon ./index.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +20,8 @@
     "path": "^0.12.7",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
